@@ -1,0 +1,45 @@
+######################## Crear proyecto con version de python que se quiera #############################
+cd ~/GenIA/gen-IA/test_project_python
+
+pyenv install 3.11.4 --> instala la version que se quiere de python
+pyenv versions --> para saber versiones instaladas en el sistema
+# 1) Selecciona Python 3.11.4 con pyenv (esto creó .python-version y está bien)
+pyenv local 3.11.4
+# 2) Inicializa Poetry en la carpeta (crea pyproject.toml) --> No crea estructura de carpetas solo el archivo y por dentro el proyectose llama test
+poetry init -n --name test --python "^3.11"
+# 3) Crea/usa el entorno de Poetry con el Python de pyenv
+poetry env use 3.11.4
+# 4) Instala (aunque no tengas deps aún, crea el lockfile)
+poetry install  --> como segunda opcion poetry lock
+ya que para hacer poetry install se necesita alguna de estás tres opciones:
+* poetry install --no-root
+* package-mode = false --> en el archivo pyproject.toml
+* crea el README.
+# 5) Verifica
+poetry run python -V
+poetry show --tree
+# 6) activar ambiente virtual:
+source /home/danilo/GenIA/gen-IA/test_project_python/.venv/bin/activate
+
+###########################################################################################################
+pyenv local 3.11.4
+source /home/danilo/GenIA/b401/.venv/bin/activate
+deactivate
+
+
+############################# proyecto nuevo y crea estructura de carpetas ################################
+El siguiente es de mi repo --> Solo para un proyecto nuevo:
+
+poetry new poetry_config  --> Crea la estructura de carpetas incluyendo los archivos pyprojects.toml
+cd poetry_config
+poetry env activate --> Crea ambiente virtual basado en el archivo pyprojects.toml
+source /home/danilo/GenIA/gen-IA/poetry_config/.venv/bin/activate --> activa ambiente virtual
+
+poetry install --> crea archivo poetry.lock
+
+poetry add jupyterlab -->agregar una librería
+poetry show --tree --> ver librerías y dependencias instaladas
+pip freeze --> ver solo librerías instaladas
+deactivate
+
+###########################################################################################################
